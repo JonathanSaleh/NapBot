@@ -39,7 +39,6 @@ bot.on('ready', () => {
 });
 
 bot.on('message', msg => {
-	console.log(ongoingNaps);
 	const args = msg.content.split(/ +/);
 	if (args[0] !== '/nap') {
 		return;

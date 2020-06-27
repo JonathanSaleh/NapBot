@@ -7,7 +7,6 @@ module.exports = {
 		const minutes = arg && Number(arg);
 		NapManager.startNap(userId);
 		if (minutes) {
-			console.log('minutes');
 			const miliseconds = minutes * 60000;
 			setTimeout(() => {
 				const minutesNapped = NapManager.endNap(userId);
