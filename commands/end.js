@@ -1,3 +1,5 @@
+const messaging = require('../utils/messaging');
+
 module.exports = {
 	name: 'end',
 	description: 'End your nap',
@@ -5,7 +7,8 @@ module.exports = {
 		const userId = msg.author.id;
 		const minutesNapped = NapManager.endNap(userId);
 		if (typeof minutesNapped === "number") {
-			msg.reply(`Your nap is over! You slept for ${minutesNapped} minutes.`);
+			const hoursAndMinutes = messaging.minutesToTime(minutesNapped);
+			msg.reply(`Your nap is over! You slept for ${hoursAndMinutes}.`);
 		} else {
 			msg.reply('You don\'t have an active nap.');
 		}

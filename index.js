@@ -16,9 +16,9 @@ const endNap = userId => {
 	const timeStarted = ongoingNaps[userId];
 	const currentTime = Date.now();
 	if (timeStarted) {
-		const timeSlept = Math.round((currentTime - timeStarted) / 60000);
+		const totalMinutesNapped = Math.round((currentTime - timeStarted) / 60000);
 		delete ongoingNaps[userId];
-		return timeSlept;
+		return totalMinutesNapped;
 	} else {
 		return null;
 	}
