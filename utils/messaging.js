@@ -5,7 +5,7 @@ const minutesToTime = totalMinutes => {
 
 	let msg = `${minutes} minute(s)`;
 	if (moreThanHour) {
-		msg = `${hours} hour(s) and ${msg}`
+		msg = `${hours} hour(s) and ${msg}`;
 	}
 	return msg;
 };
