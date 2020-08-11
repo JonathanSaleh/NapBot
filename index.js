@@ -1,33 +1,13 @@
 require('dotenv').config();
+
 const Discord = require('discord.js');
+const NapManager = require('./NapManager');
+const botCommands = require('./commands');
+
 const bot = new Discord.Client();
 const TOKEN = process.env.TOKEN;
 
 bot.commands = new Discord.Collection();
-const botCommands = require('./commands');
-
-const ongoingNaps = {}; // If more than 2 people ever use this, use a database or something
-
-const startNap = userId => {
-	ongoingNaps[userId] = Date.now();
-};
-
-const endNap = userId => {
-	const timeStarted = ongoingNaps[userId];
-	const currentTime = Date.now();
-	if (timeStarted) {
-		const totalMinutesNapped = Math.round((currentTime - timeStarted) / 60000);
-		delete ongoingNaps[userId];
-		return totalMinutesNapped;
-	} else {
-		return null;
-	}
-};
-
-const NapManager = {
-	startNap,
-	endNap,
-};
 
 Object.keys(botCommands).map(key => {
   bot.commands.set(botCommands[key].name, botCommands[key]);
